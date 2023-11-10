@@ -1,0 +1,480 @@
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #1a1a1a;
+    margin: 0px;
+}
+
+header {
+  position: fixed;
+  background: #1a1a1a;
+  color: #fff;
+  text-align: center;
+  padding: 0;
+  width: 100%;
+  z-index: 2; /* Ensure the header is displayed above the split sections */
+}
+/* header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    
+} */
+/* body {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: repeat(auto-fit, minmax(0, 12ch));
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+} */
+
+h1 {
+    margin: 0;
+    color:#ffffff;
+
+}
+h2 {
+  /* background-color: #1a1a1a; */
+  background: linear-gradient(to right, #8ae6e7, #dad172); /* Define the gradient colors */
+  background-clip: text; /* Clip the background to the text */
+  -webkit-background-clip: text; /* For older browsers */
+  color: transparent;
+  /* color: #d8d2d2; */
+  padding: 80px;
+  text-align: center;
+  font-size: 20px;
+  /* font-weight: bolder; */
+}
+p {
+    /* background-color: #1a1a1a; */
+    background: linear-gradient(to right, #8ae6e7, #dad172); /* Define the gradient colors */
+    background-clip: text; /* Clip the background to the text */
+    -webkit-background-clip: text; /* For older browsers */
+    color: transparent;
+    /* color: #d8d2d2; */
+    padding: 60px;
+    text-align: center;
+    font-size: 16px;
+    /* font-weight: bolder; */
+}
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.action-button {
+    text-align: center;
+}
+
+a {
+    display: inline-block;
+    background-color: #b5cbe3;
+    color: #555050;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.image-actions {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: "Montserrat" !important;
+    font-size: 16px;
+    font-weight: 600 !important;
+}
+
+/* #showOptions{
+  display: none;
+} */
+
+input[type="file"] {
+    display: none;
+}
+
+button {
+    background-color: #b5cbe3;
+    color: #555050;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.download-link {
+    display: block !important;
+    text-align: center;
+    margin-top: 10px;
+    color: #555050;
+    text-decoration: none;
+}
+/* Split the screen in half */
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 5vh;
+    overflow-x: hidden;
+    padding-top: 100px;
+  }
+  
+  /* Control the left side */
+  .left {
+    left: 0;
+    background-color: #1a1a1a;
+    .card {
+        width: 90vh;
+        height: 75vh;
+        background-image: linear-gradient(163deg, #00fbff 0%, #ffea00 100%);
+        border-radius: 30px;
+        transition: all .3s;
+       }
+       
+       .card2 {
+        width: 89.8vh;
+        height: 74.8vh;
+        background-color: #1a1a1a;
+        border-radius: 10px;
+        transition: all .2s;        
+       }
+       
+       .button {
+        margin-top: 20vh;
+        height: auto;
+        background: transparent;
+        padding: 0;
+        border: none;
+        cursor: pointer;
+      }
+      
+      /* button styling */
+      .button {
+        --border-right: 6px;
+        --text-stroke-color: rgba(255,255,255,0.6);
+        --animation-color: #00fdb1;
+        --fs-size: 3.5em;
+        letter-spacing: 3px;
+        text-decoration: none;
+        font-size: var(--fs-size);
+        font-family: "Arial";
+        position: relative;
+        text-transform: uppercase;
+        color: transparent;
+        -webkit-text-stroke: 1px var(--text-stroke-color);
+      }
+      /* this is the text, when you hover on button */
+      .hover-text {
+        position: absolute;
+        box-sizing: border-box;
+        content: attr(data-text);
+        color: var(--animation-color);
+        width: 0%;
+        inset: 0;
+        border-right: var(--border-right) solid var(--animation-color);
+        overflow: hidden;
+        transition: 0.5s;
+        -webkit-text-stroke: 1px var(--animation-color);
+      }
+      /* hover */
+      .button:hover .hover-text {
+        width: 100%;
+        filter: drop-shadow(0 0 23px var(--animation-color))
+      }
+
+       .card2:hover {
+        transform: scale(0.98);
+        border-radius: 20px;
+       }
+       
+       .card:hover {
+        box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30);
+       }
+  }
+  
+  /* Control the right side */
+  .right {
+    right: 0;
+    background-color: #1a1a1a;
+    .card {
+        width: 90vh;
+        height: 75vh;
+        background-image: linear-gradient(163deg, #00fbff 0%, #ffea00 100%);
+        border-radius: 30px;
+        transition: all .3s;
+       }
+       
+       .card2 {
+        width: 89.8vh;
+        height: 74.8vh;
+        background-color: #1a1a1a;
+        border-radius: 10px;
+        transition: all .2s;        
+       }
+       
+       .button {
+        margin-top: 20vh;
+        height: auto;
+        background: transparent;
+        padding: 0;
+        border: none;
+        cursor: pointer;
+      }
+      
+      /* button styling */
+      .button {
+        --border-right: 6px;
+        --text-stroke-color: rgba(255,255,255,0.6);
+        --animation-color: #d8e957;
+        --fs-size: 3.5em;
+        letter-spacing: 3px;
+        text-decoration: none;
+        font-size: var(--fs-size);
+        font-family: "Arial";
+        position: relative;
+        text-transform: uppercase;
+        color: transparent;
+        -webkit-text-stroke: 1px var(--text-stroke-color);
+      }
+      /* this is the text, when you hover on button */
+      .hover-text {
+        position: absolute;
+        box-sizing: border-box;
+        content: attr(data-text);
+        color: var(--animation-color);
+        width: 0%;
+        inset: 0;
+        border-right: var(--border-right) solid var(--animation-color);
+        overflow: hidden;
+        transition: 0.5s;
+        -webkit-text-stroke: 1px var(--animation-color);
+      }
+      /* hover */
+      .button:hover .hover-text {
+        width: 100%;
+        filter: drop-shadow(0 0 23px var(--animation-color))
+      }
+
+       .card2:hover {
+        transform: scale(0.98);
+        border-radius: 20px;
+       }
+       
+       .card:hover {
+        box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30);
+       }
+  }
+  /* If you want the content centered horizontally and vertically */
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  /* Style the image inside the centered container, if needed */
+  .centered img {
+    width: 150px;
+    border-radius: 50%;
+  }
+  
+  /* DEMO-SPECIFIC STYLES */
+  .typewriter h1 {
+    background: linear-gradient(to right, #8ae6e7, #dad172); /* Define the gradient colors */
+    background-clip: text; /* Clip the background to the text */
+    -webkit-background-clip: text; /* For older browsers */
+    color: transparent;
+    /* color: #fff; */
+    font-family: 'Girassol', serif;
+    font-weight: bolder;
+    font-size: 70px;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange; /* The typwriter cursor */
+    /* white-space: nowrap;  */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .12em; /* Adjust as needed */
+    animation: 
+      typing 5s steps(100, end),
+      blink-caret .5s step-end infinite;
+  }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #1a1a1a }
+  }
+
+
+  .Home {
+    width: 10vh;
+    height: 5vh;
+    margin-top: 50px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    transition: all .2s;  
+    /* padding: 1px; */
+
+    .button {
+        /* margin-top: 20vh; */
+        height: auto;
+        margin-left: 5vh;
+        background: transparent;
+        padding: 0;
+        border: none;
+        cursor: pointer;
+      }
+      
+      /* button styling */
+      .button {
+        --border-right: 6px;
+        --text-stroke-color: rgba(255,255,255,0.6);
+        --animation-color: #00fdb1;
+        --fs-size: 4em;
+        letter-spacing: 3px;
+        text-decoration: none;
+        font-size:25px;
+        font-family: 'Montserrat', sans-serif;
+        position: relative;
+        text-transform: uppercase;
+        color: transparent;
+        -webkit-text-stroke: 1px var(--text-stroke-color);
+      }
+      /* this is the text, when you hover on button */
+      .hover-text {
+        position: absolute;
+        box-sizing: border-box;
+        content: attr(data-text);
+        color: var(--animation-color);
+        width: 0%;
+        inset: 0;
+        border-right: var(--border-right) solid var(--animation-color);
+        overflow: hidden;
+        transition: 0.5s;
+        -webkit-text-stroke: 1px var(--animation-color);
+      }
+      /* hover */
+      .button:hover .hover-text {
+        width: 100%;
+        filter: drop-shadow(0 0 23px var(--animation-color))
+      }
+   }
+
+   /* Style for button container */
+.button-container {
+    text-align: center;
+    margin: 10px;
+    background-color: #1a1a1a;
+
+    /* Style for the "Upload Image" button */
+    .upload-button {
+        background: transparent;
+        margin-top: 30vh;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .upload-button {
+        --border-right: 6px;
+        --text-stroke-color: rgba(255,255,255,0.6);
+        --animation-color: #00fdb1;
+        --fs-size: 4em;
+        letter-spacing: 3px;
+        text-decoration: none;
+        font-size:25px;
+        font-family: 'Montserrat', sans-serif;
+        position: relative;
+        text-transform: uppercase;
+        color: transparent;
+        -webkit-text-stroke: 1px var(--text-stroke-color);
+      }
+    
+    .encrypt-button {
+        background: transparent;
+            margin-top: 10vh;
+            border: none;
+            cursor: pointer;
+    }
+    
+    .encrypt-button{
+        --border-right: 6px;
+        --text-stroke-color: rgba(255,255,255,0.6);
+        --animation-color: #00fdb1;
+        --fs-size: 4em;
+        letter-spacing: 3px;
+        text-decoration: none;
+        font-size:25px;
+        font-family: 'Montserrat', sans-serif;
+        position: relative;
+        text-transform: uppercase;
+        color: transparent;
+        -webkit-text-stroke: 1px var(--text-stroke-color);
+    }
+
+
+    .download-link {
+        background: transparent;
+            margin-top: 10vh;
+            border: none;
+            cursor: pointer;
+    }
+    
+    .download-link{
+        --border-right: 6px;
+        --text-stroke-color: rgba(255,255,255,0.6);
+        --animation-color: #00fdb1;
+        --fs-size: 4em;
+        letter-spacing: 3px;
+        text-decoration: none;
+        font-size:25px;
+        font-family: 'Montserrat', sans-serif;
+        position: relative;
+        text-transform: uppercase;
+        color: transparent;
+        -webkit-text-stroke: 1px var(--text-stroke-color);
+    }
+}
+
+#originalImagePreview{
+    width: 300px;
+    margin: auto;
+    text-align: center;
+    display: flex;
+}
+
+#decryptedImage{
+    width: 300px;
+    margin: auto;
+    text-align: center;
+    display: flex;
+}
+
+
+/* Style for the "Encrypt" button */
+
+
+
+/* Style for the download link (no need to change, already defined) */
+/* .download-link {
+    display: none;
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.download-link:hover {
+    background-color: #526374;
+} */
