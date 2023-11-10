@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Girassol&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <title>Image Encryption</title>
+</head>
+<body>
+    <header>
+        <div class="typewriter">
+            <h1>PicCryptor</h1>
+          </div>
+          <div class="Home" >
+            <a class="button" data-text="Awesome" href="index.html">
+                <span class="actual-text">&nbsp;Home&nbsp;</span>
+                <span aria-hidden="true" class="hover-text">&nbsp;Home&nbsp;</span>
+            </a>
+        </div>
+    </header>
+    <main>
+        <!-- <div style="height: 150px;" ></div>
+        <div class="action-button">
+            <a href="index.html">Back to Home</a>
+        </div> -->
+        <div class="image-actions">
+            <input type="file" id="imageInput" accept="image/*" style="display: none">
+            <div class="button-container">
+                <button id="uploadButton" class="upload-button">Upload Image</button>
+            </div>
+            
+            <section id="showOptions" style="display: none">
+                <h2>Original Image</h2>
+                <img id="originalImagePreview" alt="Please upload an image">
+            </section>
+
+            <section class="button-container"  >
+                <button id="encryptButton" class="encrypt-button">Encrypt</button>
+            </section>
+
+            <div class="button-container" >
+                <a id="downloadEncryptedLink" class="download-link" style="display: none" download="encrypted_image.png">Download Encrypted Image</a>
+            </div>
+        </div>
+
+        
+
+        <section class="image-preview encrypted">
+            <!-- <h2>Encrypted Image</h2>
+            <a id="downloadEncryptedLink" class="download-link" style="display: none" download="encrypted_image.png">Download Encrypted Image</a> -->
+        </section>
+    </main>
+    <script src="js/common.js"></script>
+    <!-- <script src="js/encryption.js"></script> -->
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Image Decryption</title>
+</head>
+<body>
+    <header>
+        <h1>Image Decryption</h1>
+    </header>
+    <main>
+        <section class="action-button">
+            <a href="index.html">Back to Home</a>
+        </section>
+        <section class="image-actions">
+            <input type="file" id="imageInput" accept="image/*" style="display: none">
+            <button id="uploadButton">Upload Encrypted Image</button>
+            <button id="decryptButton">Decrypt</button>
+            <a id="downloadDecryptedLink" class="download-link" style="display: none" download="decrypted_image.png">Download Decrypted Image</a>
+        </section>
+        <section class="image-preview">
+            <h2>Encrypted Image</h2>
+            <img id="encryptedImagePreview" alt="Encrypted Image">
+        </section>
+        <section class="image-preview decrypted">
+            <h2>Decrypted Image</h2>
+            <img id="decryptedImage" alt="Decrypted Image">
+        </section>
+    </main>
+    <script src="js/common.js"></script> -->
+    <!-- <script src="js/decryption.js"></script> -->
+<!-- </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Girassol&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <title>Image Decryption</title>
+</head>
+<body>
+    <header>
+        <div class="typewriter" style="height: 100px;">
+            <h1>PicCryptor</h1>
+        </div>
+        
+    </header>
+    <main >
+        <div style="height: 150px;" ></div>
+        <div class="action-button">
+            <a href="index.html">Back to Home</a>
+        </div>
+        <section class="image-actions" style="margin: auto; margin-top: 50px; color: white !important; display: flex; flex-direction: column; width: 400px; ">
+            <input type="file" id="imageInput2" accept="image/*" style="display: none">   
+            <button id="uploadButton2" style="margin: 20px;">Upload Encrypted Image</button>         
+            <div style="display: flex; flex-direction: row; margin: 20px;">
+
+                <label for="decryptionKey" style="margin-right: 10px;color: white;display: flex;align-items: center;">Decryption Key: </label>
+                <input type="text" id="decryptionKey" style="padding: 5px;width: 208px;">
+            </div>
+            <button id="decryptButton" style="margin: 20px;">Decrypt</button>
+            
+        </section>
+        <!-- <section class="image-preview">
+            <h2>Original Image</h2>
+            <img id="originalImagePreview" alt="Original Image" width="150" height="150">
+        </section>
+        <section class="image-preview">
+            <h2>Encrypted Image</h2>
+            <img id="encryptedImagePreview" alt="Encrypted Image" width="150" height="150">
+        </section> -->
+        <section class="image-preview decrypted" id="decryptShow" style="display: none;">
+            <h2>Decrypted Image</h2>
+            <img id="decryptedImage" alt="Decrypted Image" width="150" height="150" >
+            <a id="downloadDecryptedLink" class="download-link" style="display: none; width: 400px; margin: auto; margin-top: 10px;" download="decrypted_image.png">Download Decrypted Image</a>
+        </section>
+    </main>
+    <script src="js/common.js"></script>
+    <!-- <script src="js/decryption.js"></script> -->
+</body>
+</html>
+
