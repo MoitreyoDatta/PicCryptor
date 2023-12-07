@@ -11,8 +11,34 @@ document.addEventListener('DOMContentLoaded', function () {
     const encryptButton = document.getElementById('encryptButton');
     const decryptButton = document.getElementById('decryptButton');
     const decryptionKeyInput = document.getElementById('decryptionKey');
-                                                                                           
-
+    
+    function generateUniqueString(inputInteger) {    
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+{}[]|/';
+        let uniqueString = '';
+        inputInteger=inputInteger*1234567890123456789;
+        while (inputInteger > 0) {
+            const remainder = inputInteger % characters.length;
+            uniqueString = characters.charAt(remainder) + uniqueString;
+            inputInteger = Math.floor(inputInteger / characters.length);
+        }
+    
+        return uniqueString || '0'; // Return '0' if the input is 0
+    }
+    
+    function reverseUniqueString(uniqueString) {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+{}[]|/';
+    
+        let originalInteger = 0;
+        for (let i = 0; i < uniqueString.length; i++) {
+            const char = uniqueString.charAt(i);
+            const charValue = characters.indexOf(char);
+            originalInteger = originalInteger * characters.length + charValue;
+        }
+        originalInteger=originalInteger/1234567890123456789;
+        return originalInteger;
+    }
+    
+    
     // Function to show a preview of the uploaded image
     function showOriginalImagePreview(file) {
         const reader = new FileReader();
@@ -69,9 +95,10 @@ document.addEventListener('DOMContentLoaded', function () {
     
                 // Generate a random encryption key (between 0 and 255)
                 const encryptionKey = Math.floor(Math.random() * 256);
+                const encryptionKey2=generateUniqueString(encryptionKey);
     
                 // Display the encryption key
-                alert(`Encryption Key: ${encryptionKey}`);
+                alert(`Encryption Key: ${encryptionKey2}`);
                 
                 const downloadEncryptedLink = document.getElementById('downloadEncryptedLink');             
                 const encryptedData = encryptImage(imageData, encryptionKey);
@@ -108,7 +135,8 @@ document.addEventListener('DOMContentLoaded', function () {
     
             reader.onload = function (event) {                             
                 const imageData = new Uint8Array(event.target.result);
-                const decryptionKey = parseInt(decryptionKeyInput.value, 10);
+                //const decryptionKey = parseInt(decryptionKeyInput.value, 10);
+                const decryptionKey=reverseUniqueString(decryptionKeyInput.value);
                 const decryptedData = decryptImage(imageData, decryptionKey);
                 decryptedImage.src = URL.createObjectURL(new Blob([decryptedData], { type: file.type }));
                 decryptedImage.style.display = 'block';
