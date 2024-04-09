@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var res=""
 
         for(let i=0;i<str.length;i++)
-            res+=String.fromCharCode(str.charCodeAt(i)-2);
+            res+=String.fromCharCode(str.charCodeAt(i)-25);
 
         var doubleRes=parseFloat(res);
         return doubleRes;
