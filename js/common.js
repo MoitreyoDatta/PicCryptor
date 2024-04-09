@@ -12,30 +12,27 @@ document.addEventListener('DOMContentLoaded', function () {
     const decryptButton = document.getElementById('decryptButton');
     const decryptionKeyInput = document.getElementById('decryptionKey');
     
-    function generateUniqueString(inputInteger) {    
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+{}[]|/';
-        let uniqueString = '';
-        inputInteger=inputInteger*1234567890123456789;
-        while (inputInteger > 0) {
-            const remainder = inputInteger % characters.length;
-            uniqueString = characters.charAt(remainder) + uniqueString;
-            inputInteger = Math.floor(inputInteger / characters.length);
-        }
-    
-        return uniqueString || '0'; // Return '0' if the input is 0
+    //Generate Encryption string from timestamp value
+    function getEncryptedString(key)
+    {
+        var str=key.toString();
+        var res="";
+        
+        for(let i=0;i<str.length;i++)
+            res+=String.fromCharCode(str.charCodeAt(i)+25);
+        return res;
     }
-    
-    function reverseUniqueString(uniqueString) {
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+{}[]|/';
-    
-        let originalInteger = 0;
-        for (let i = 0; i < uniqueString.length; i++) {
-            const char = uniqueString.charAt(i);
-            const charValue = characters.indexOf(char);
-            originalInteger = originalInteger * characters.length + charValue;
-        }
-        originalInteger=originalInteger/1234567890123456789;
-        return originalInteger;
+
+    //Get back timestamp value from Encrypton string
+    function decryptEncryptedString(str)
+    {
+        var res=""
+
+        for(let i=0;i<str.length;i++)
+            res+=String.fromCharCode(str.charCodeAt(i)-2);
+
+        var doubleRes=parseFloat(res);
+        return doubleRes;
     }
     
     
@@ -71,14 +68,14 @@ document.addEventListener('DOMContentLoaded', function () {
     function encryptImage(imageData, key) {
         let encryptedData = new Uint8Array(imageData.length);                                                    
         for (let i = 0; i < imageData.length; i++) {
-            encryptedData[i] = imageData[i] ^ key;
+            encryptedData[i] = imageData[i] + key;
         }
         return encryptedData;
     }
 
     // Function to decrypt the image using XOR operation
     function decryptImage(encryptedData, key) {
-        return encryptImage(encryptedData, key); // XOR is its own inverse
+        return encryptImage(encryptedData, -1*key); // XOR is its own inverse
     }
     if(encryptButton){                                                                                       
         encryptButton.addEventListener('click', function () {
@@ -92,13 +89,13 @@ document.addEventListener('DOMContentLoaded', function () {
     
             reader.onload = function (event) {
                 const imageData = new Uint8Array(event.target.result);
-    
-                // Generate a random encryption key (between 0 and 255)
-                const encryptionKey = Math.floor(Math.random() * 256);
-                const encryptionKey2=generateUniqueString(encryptionKey);
+
+                //Generate the Timestamp in seconds as encryptionKey
+                const encryptionKey = new Date().getTime()/1000;
+                const encryptionString= getEncryptedString(encryptionKey);
     
                 // Display the encryption key
-                alert(`Encryption Key: ${encryptionKey2}`);
+                alert(`Encryption Key: ${encryptionString}`);
                 
                 const downloadEncryptedLink = document.getElementById('downloadEncryptedLink');             
                 const encryptedData = encryptImage(imageData, encryptionKey);
@@ -135,8 +132,10 @@ document.addEventListener('DOMContentLoaded', function () {
     
             reader.onload = function (event) {                             
                 const imageData = new Uint8Array(event.target.result);
-                //const decryptionKey = parseInt(decryptionKeyInput.value, 10);
-                const decryptionKey=reverseUniqueString(decryptionKeyInput.value);
+
+                //const decryptionKey = decryptionKeyInput.value;
+                const decryptionKey = decryptEncryptedString(decryptionKeyInput.value);
+
                 const decryptedData = decryptImage(imageData, decryptionKey);
                 decryptedImage.src = URL.createObjectURL(new Blob([decryptedData], { type: file.type }));
                 decryptedImage.style.display = 'block';
