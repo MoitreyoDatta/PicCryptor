@@ -23,6 +23,14 @@ document.addEventListener('DOMContentLoaded', function () {
         return res;
     }
 
+    //Generate Random Number
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+      }
+      
+
     //Get back timestamp value from Encrypton string
     function decryptEncryptedString(str)
     {
@@ -64,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Function to encrypt the image using XOR operation
+    // Function to encrypt the image
     function encryptImage(imageData, key) {
         let encryptedData = new Uint8Array(imageData.length);                                                    
         for (let i = 0; i < imageData.length; i++) {
@@ -73,10 +81,12 @@ document.addEventListener('DOMContentLoaded', function () {
         return encryptedData;
     }
 
-    // Function to decrypt the image using XOR operation
+    // Function to decrypt the image
     function decryptImage(encryptedData, key) {
-        return encryptImage(encryptedData, -1*key); // XOR is its own inverse
+        return encryptImage(encryptedData, -1*key);
     }
+
+
     if(encryptButton){                                                                                       
         encryptButton.addEventListener('click', function () {
             if (imageInput.files.length === 0) {
@@ -90,8 +100,8 @@ document.addEventListener('DOMContentLoaded', function () {
             reader.onload = function (event) {
                 const imageData = new Uint8Array(event.target.result);
 
-                //Generate the Timestamp in seconds as encryptionKey
-                const encryptionKey = new Date().getTime()/1000;
+                //Generate the Timestamp in seconds as encryptionKey, add the Random number
+                const encryptionKey = new Date().getTime()+getRandomInt(0,9007199254740991);
                 const encryptionString= getEncryptedString(encryptionKey);
     
                 // Display the encryption key
@@ -101,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const encryptedData = encryptImage(imageData, encryptionKey);
                 const encryptedBlob = new Blob([encryptedData], { type: file.type });
                 downloadEncryptedLink.href = URL.createObjectURL(encryptedBlob);
-                downloadEncryptedLink.style.display = 'block';
+                downloadEncryptedLink.style.display = 'inline-block';
             };
     
             reader.readAsArrayBuffer(file);
@@ -133,7 +143,6 @@ document.addEventListener('DOMContentLoaded', function () {
             reader.onload = function (event) {                             
                 const imageData = new Uint8Array(event.target.result);
 
-                //const decryptionKey = decryptionKeyInput.value;
                 const decryptionKey = decryptEncryptedString(decryptionKeyInput.value);
 
                 const decryptedData = decryptImage(imageData, decryptionKey);
@@ -141,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 decryptedImage.style.display = 'block';
                 downloadDecryptedLink.href = URL.createObjectURL(new Blob([decryptedData], { type: file.type }));
                 downloadDecryptedLink.href = URL.createObjectURL(new Blob([new Uint8Array(decryptedData.buffer)], { type: file.type }));
-                downloadDecryptedLink.style.display = 'block';
+                downloadDecryptedLink.style.display = 'inline-block';
                 decryptShow.style.display = "block";
             };
     
